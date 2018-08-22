@@ -97,7 +97,7 @@ int LuaSkillManager::awardSkill(lua_State* L) {
 	String skillName = lua_tostring(L, -1);
 	CreatureObject* creo = (CreatureObject*) lua_touserdata(L, -2);
 
-	lua_pushboolean(L, realObject->awardSkill(skillName, creo, true, false, false));
+	lua_pushboolean(L, realObject->awardSkill(skillName, creo, true, false, false, false, true));
 
 	return 1;
 }

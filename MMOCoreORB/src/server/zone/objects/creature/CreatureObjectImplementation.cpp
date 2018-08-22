@@ -1424,8 +1424,9 @@ int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
 
 float CreatureObjectImplementation::getFrsPower() {
 	Locker locker(&skillModMutex);
-	float fpl = 0;
-	float fpd = 0;
+	float fpl = 0.0f;
+	float fpd = 0.0f;
+
 	fpl = (float)skillModList.getSkillMod("force_power_light");
 	fpd = (float)skillModList.getSkillMod("force_power_dark");
 
@@ -1437,7 +1438,9 @@ float CreatureObjectImplementation::getFrsPower() {
 
 float CreatureObjectImplementation::getFrsManipulation() {
 	Locker locker(&skillModMutex);
-	float fml,fmd;
+	float fml = 0.0f;
+	float fmd = 0.0f;
+
 	fml = (float)skillModList.getSkillMod("force_manipulation_light");
 	fmd = (float)skillModList.getSkillMod("force_manipulation_dark");
 
@@ -1449,7 +1452,8 @@ float CreatureObjectImplementation::getFrsManipulation() {
 
 float CreatureObjectImplementation::getFrsControl() {
 	Locker locker(&skillModMutex);
-	float fcl,fcd;
+	float fcl = 0.0f;
+	float fcd = 0.0f;
 	fcl = (float)skillModList.getSkillMod("force_control_light");
 	fcd = (float)skillModList.getSkillMod("force_control_dark");
 
@@ -1461,7 +1465,7 @@ float CreatureObjectImplementation::getFrsControl() {
 
 float CreatureObjectImplementation::getFrsMod(const String& type) {
 	Locker locker(&skillModMutex);
-	int typeStat = 0;
+	float typeStat = 0.0f;
 
 	if (type != "control" && type != "manipulation" && type != "power"){
 		error("Invalid frs mod being referenced in CreatureObjectImplementation::getFrsMod");
@@ -1475,7 +1479,7 @@ float CreatureObjectImplementation::getFrsMod(const String& type) {
 	else if (type == "manipulation")
 		typeStat = getFrsManipulation();
 
-	float mod = (1 + .25 * (typeStat/120)); //25% bonus at 120 skill rank
+	float mod = (1.0f + .25 * (typeStat/120)); //25% bonus at 120 skill rank
 	return mod;
 }
 
@@ -3124,8 +3128,9 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object, bool b
 	if (areInDuel)
 		return true;
 
-	if (object->hasBountyMissionFor(asCreatureObject()) || (ghost->hasBhTef() && hasBountyMissionFor(object)))
-		return true;
+	if (object->hasBountyMissionFor(asCreatureObject()) || (ghost->hasBhTef() && hasBountyMissionFor(object))){
+			return true;
+	}
 
 	if (getGroupID() != 0 && getGroupID() == object->getGroupID())
 		return false;
@@ -3146,6 +3151,7 @@ int CreatureObjectImplementation::getHuntedLevel(CreatureObject* player){
 	if (player == NULL)
 	return 0;
 
+	Locker locker(player);
 	if (player->hasBuff(BuffCRC::SKILL_BUFF_HUNTED1))
 		hunted++;
 	if (player->hasBuff(BuffCRC::SKILL_BUFF_HUNTED2))
@@ -3170,13 +3176,10 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	if (ghost == nullptr)
 		return false;
 
-	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() == getFaction() && ghost->hasPvpTef()){
-		//allow heal, target is gcw teffed, and both the healer and target are overt, this trumps BH tef
-	}
-	else if (ghost->hasBhTef() && !ghost->hasPvpTef()) {
-		return false;
-	}
 
+	if (ghost->hasBhTef() && !ghost->hasGcwTef()) {
+		return false; //BH tef prevents healing unless the healer is also GCW Teffed
+	}
 
 	CreatureObject* targetCreo = asCreatureObject();
 

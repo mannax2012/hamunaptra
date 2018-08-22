@@ -5,11 +5,12 @@ geonosian_epic = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "experimental_vibro_motor", weight = 2000000},
+		{itemTemplate = "experimental_vibro_motor", weight = 1500000},
 		{itemTemplate = "epic_geo_power_cube_red", weight = 2000000},
-		{itemTemplate = "epic_geo_power_cube_yellow", weight = 2000000},
+		{itemTemplate = "epic_geo_power_cube_yellow", weight = 1500000},
 		{itemTemplate = "epic_geo_power_cube_white", weight = 2000000},
 		{itemTemplate = "epic_geo_power_cube_green", weight = 2000000},
+		{itemTemplate = "geo_carbine_schematic", weight = 1000000},
 	}
 }
 

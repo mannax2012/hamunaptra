@@ -245,7 +245,6 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 	int initialSkillsBounty = 0;
 	int initialBounty = 0;
 	int newSkillBounty = 0;
-	bool awardWithRank = true;
 	String skillStarter;
 
 	if (skill == NULL)
@@ -283,8 +282,10 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == NULL){
+			error("Ghost is null in grantskill this should not happen");
 			return false;
+		}
 
 
 		FrsManager* frsManager = creature->getZoneServer()->getFrsManager();
@@ -318,17 +319,18 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 		if (curExperience < neededXP)
 				giveXp = neededXP-curExperience; //give just enough xp to promote
 
-		//error("FRS Skill granted to: " + creature->getFirstName() + "] New Council Rank: [" + String::valueOf(rank) + "] XP set to: [" + String::valueOf(neededXP) + "]");
+		error("FRS Skill granted to: " + creature->getFirstName() + "] New Council Rank: [" + String::valueOf(rank) + "] XP set to: [" + String::valueOf(neededXP) + "]");
 		ghost->getZoneServer()->getPlayerManager()->awardExperience(creature, "force_rank_xp", giveXp);
 		if (setRank){
+						error("This skill being granted invokes setplayerRank, setting rank. All recursive grants should not invoke setRank");
 		frsManager->setPlayerRank(creature,rank);
-		awardWithRank = false;
 		}
 	}
 
 
 	//Check for required skills.
-	if (!ignoreRequirements){
+	if (awardRequiredSkills){
+					error("Requirements are not ignored, adding all required pre-requisites");
 		auto requiredSkills = skill->getSkillsRequired();
 		for (int i = 0; i < requiredSkills->size(); ++i) {
 			const String& requiredSkillName = requiredSkills->get(i);
@@ -338,7 +340,8 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 				continue;
 
 			if (awardRequiredSkills){
-				awardSkill(requiredSkillName, creature, notifyClient, awardRequiredSkills, noXpRequired, awardWithRank);
+				awardSkill(requiredSkillName, creature, notifyClient, awardRequiredSkills, noXpRequired, true,  false); //do not recursively set rank
+					//bool notifyClient, bool awardRequiredSkills, bool noXpRequired, bool ignoreRequirements, bool setRank)
 			}
 			if (!creature->hasSkill(requiredSkillName))
 				return false;
@@ -348,9 +351,14 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 			return false;
 		}
 	}
+else{
+				error("Skill requirements were ignored, not adding pre-requisite skills");
+}
 	//If they already have the skill, then return true.
-	if (creature->hasSkill(skill->getSkillName()))
+	if (creature->hasSkill(skill->getSkillName())){
+			error("They already have this skill, returning true.");
 		return true;
+	}
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -360,7 +368,11 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 		//Witdraw experience.
 		if (!noXpRequired) {
+						error("XP was not ingored, deducting XP cost");
 			ghost->addExperience(skill->getXpType(), -skill->getXpCost(), true);
+		}
+		else{
+						error("XP Requirement was ignored");
 		}
 
 		creature->addSkill(skill, notifyClient);

@@ -9,10 +9,12 @@
 #include "server/zone/managers/skill/SkillModManager.h"
 
 class VolleyFireCommand : public SquadLeaderCommand {
+		float range;
 public:
 
 	VolleyFireCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
+			range = 256;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -91,6 +93,11 @@ public:
 				continue;
 
 			Locker clocker(member, leader);
+
+			if(!checkDistance(member, leader, range)) {
+					member->sendSystemMessage("You are too far from your Squad Leader");
+				return TOOFAR;
+			}
 
 			String queueAction = "volleyfireattack";
 			uint64 queueActionCRC = queueAction.hashCode();

@@ -55,7 +55,7 @@ ChargeShot2Command = {
 
 	combatSpam = "chargeblast",
 
-	coneAngle = 45,
+	coneAngle = 60,
 	coneAction = true,
 
 	stateEffects = {
@@ -64,7 +64,7 @@ ChargeShot2Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		100, 
+		90, 
 		0, 
 		0 
 	  )

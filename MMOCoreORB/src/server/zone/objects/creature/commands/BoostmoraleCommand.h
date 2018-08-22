@@ -10,10 +10,12 @@
 #include "SquadLeaderCommand.h"
 
 class BoostmoraleCommand : public SquadLeaderCommand {
+		float range;
 public:
 
 	BoostmoraleCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
+			range = 256;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -120,6 +122,11 @@ public:
 				continue;
 
 			Locker clocker(member, leader);
+
+			if(!checkDistance(member, leader, range)) {
+						member->sendSystemMessage("You are too far from your Squad Leader");
+				return TOOFAR;
+			}
 
 			sendCombatSpam(member);
 

@@ -236,6 +236,9 @@ class PlayerObject extends IntangibleObject {
 	protected Time lastGcwPvpCombatActionTimestamp;
 
 	@dereferenced
+	protected Time lastFactionalGcwPvpCombatActionTimestamp;
+
+	@dereferenced
 	protected Reference<PvpTefRemovalTask> pvpTefTask;
 
 	@dereferenced
@@ -352,6 +355,7 @@ class PlayerObject extends IntangibleObject {
 
 		lastBhPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		lastFactionalGcwPvpCombatActionTimestamp.updateToCurrentTime();
 
 		lastDigestion.updateToCurrentTime();
 
@@ -1635,15 +1639,23 @@ public native int numSpecificSkills(CreatureObject creature, final string reqSki
 	@local
 	public native Time getLastGcwPvpCombatActionTimestamp();
 
-	public native void updateLastPvpCombatActionTimestamp(boolean updateGcwAction, boolean updateBhAction);
+	@dereferenced
+	@local
+	public native Time getLastFactionalGcwPvpCombatActionTimestamp();
+
+	public native void updateLastPvpCombatActionTimestamp(boolean updateGcwAction, boolean updateBhAction, boolean updateFactionalGcwAction);
 
 	public native void updateLastBhPvpCombatActionTimestamp();
 
 	public native void updateLastGcwPvpCombatActionTimestamp();
 
+	public native void updateLastFactionalGcwPvpCombatActionTimestamp();
+
 	public native boolean hasPvpTef();
 
 	public native boolean hasBhTef();
+
+	public native boolean hasGcwTef();
 
 	public native void schedulePvpTefRemovalTask(boolean removeGcwTefNow, boolean removeBhTefNow);
 

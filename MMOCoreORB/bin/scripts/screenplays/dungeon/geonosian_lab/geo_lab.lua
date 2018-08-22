@@ -153,6 +153,7 @@ function GeonosianLabScreenPlay:spawnMobiles()
 	spawnMobile("yavin4", "biogenic_scientist_human", 1, 23.8, -32, -83.2, 130, 1627798)--biogen_human
 	spawnMobile("yavin4", "biogenic_construction", 1, -134.5, -21.7, -74.8, 90, 1627794)--biogen_constuc
 	spawnMobile("yavin4", "biogenic_engineertech", 1,-107.7,-18,-33.8,176,1627790)--biogen_engineer
+	spawnMobile("yavin4", "poggle_the_lesser", math.random(900, 1200),-133,-18,-58,176,1627790)--poggle_the_lesser
 	spawnMobile("yavin4", "biogenic_assistant", 1, -36, -21.9, -162.8, 0, 1627803)--biogen_assistant
 	spawnMobile("yavin4", "biogenic_scientist_generic_01", 1, -72.0, -34, -272.9, 0, 1627812)--biogen_gen01
 	spawnMobile("yavin4", "biogenic_scientist_generic_02", 1, -127.2, -34, -189.0, -93, 1627815)--biogen_gen02
@@ -282,7 +283,7 @@ function GeonosianLabScreenPlay:spawnMobiles()
 
 	-- Annoying survival check at beginnig of cave --
 	-- [1627788]
-	spawnMobile("yavin4", "crazed_geonosian_guard",300, -77.6631, -18.581, -31.3627, 143, 1627788) 
+	spawnMobile("yavin4", "crazed_geonosian_guard",300, -77.6631, -18.581, -31.3627, 143, 1627788)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300, -68.0155, -19.1212, -37.35, -128, 1627788)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300, -77.6182, -18.6051, -40.3633, -178, 1627788)
 	spawnMobile("yavin4", "crazed_geonosian_guard",300, -76.7914, -18.4807, -43.8397, -36, 1627788)

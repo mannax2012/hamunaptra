@@ -1,5 +1,5 @@
 bantha_saddle_armored = Creature:new {
-	customName = "bantha_saddle_armored",
+	customName = "an Armored Bantha",
 	--objectName = "",
 	--randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",

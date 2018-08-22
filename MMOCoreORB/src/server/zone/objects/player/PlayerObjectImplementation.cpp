@@ -2049,7 +2049,7 @@ void PlayerObjectImplementation::doForceRegen() {
 		Reference<ForceMeditateTask*> medTask = creature->getPendingTask("forcemeditate").castTo<ForceMeditateTask*>();
 
 		if (medTask != nullptr)
-			modifier = 5;
+			modifier = 3;
 
 		if (medTask != nullptr && ((creature->hasSkill("force_rank_light_rank_01") || creature->hasSkill("force_rank_dark_rank_01")) && creature->hasSkill("force_discipline_enhancements_synergy_04"))) //bonus if they have synergy 4 and free meditate from frs
 			modifier += 2;
@@ -2090,7 +2090,11 @@ Time PlayerObjectImplementation::getLastGcwPvpCombatActionTimestamp() {
 	return lastGcwPvpCombatActionTimestamp;
 }
 
-void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction) {
+Time PlayerObjectImplementation::getLastFactionalGcwPvpCombatActionTimestamp() {
+	return lastFactionalGcwPvpCombatActionTimestamp;
+}
+
+void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateGcwAction, bool updateBhAction, bool updateFactionalGcwAction) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == nullptr)
@@ -2107,9 +2111,11 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 			parent->notifyObservers(ObserverEventType::BHTEFCHANGED);
 	}
 
-	if (updateGcwAction) {
+	if (updateGcwAction || updateFactionalGcwAction) {
 		lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
 		lastGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
+		lastFactionalGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		lastFactionalGcwPvpCombatActionTimestamp.addMiliTime(FactionManager::TEFTIMER);
 	}
 
 	schedulePvpTefRemovalTask();
@@ -2121,15 +2127,24 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp(bool updateG
 }
 
 void PlayerObjectImplementation::updateLastBhPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(false, true);
+	updateLastPvpCombatActionTimestamp(false, true, false);
 }
 
 void PlayerObjectImplementation::updateLastGcwPvpCombatActionTimestamp() {
-	updateLastPvpCombatActionTimestamp(true, false);
+	updateLastPvpCombatActionTimestamp(true, false, false);
 }
+
+void PlayerObjectImplementation::updateLastFactionalGcwPvpCombatActionTimestamp() {
+	updateLastPvpCombatActionTimestamp(true, false, true);
+}
+
 
 bool PlayerObjectImplementation::hasPvpTef() {
 	return !lastGcwPvpCombatActionTimestamp.isPast() || hasBhTef();
+}
+
+bool PlayerObjectImplementation::hasGcwTef() {
+	return !lastFactionalGcwPvpCombatActionTimestamp.isPast();
 }
 
 bool PlayerObjectImplementation::hasBhTef() {
@@ -2147,8 +2162,11 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 	}
 
 	if (removeGcwTefNow || removeBhTefNow) {
-		if (removeGcwTefNow)
+		if (removeGcwTefNow){
 			lastGcwPvpCombatActionTimestamp.updateToCurrentTime();
+			lastFactionalGcwPvpCombatActionTimestamp.updateToCurrentTime();
+			lastFactionalGcwPvpCombatActionTimestamp.updateToCurrentTime();
+		}
 
 		if (removeBhTefNow) {
 			lastBhPvpCombatActionTimestamp.updateToCurrentTime();
@@ -2163,6 +2181,7 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeGcwTefNow,
 	if (!pvpTefTask->isScheduled()) {
 		if (hasPvpTef()) {
 			auto gcwTefMs = getLastGcwPvpCombatActionTimestamp().miliDifference();
+			auto gcwFactionalTefMs = getLastFactionalGcwPvpCombatActionTimestamp().miliDifference();
 			auto bhTefMs = getLastBhPvpCombatActionTimestamp().miliDifference();
 			pvpTefTask->schedule(llabs(gcwTefMs < bhTefMs ? gcwTefMs : bhTefMs));
 		} else {

@@ -54,6 +54,12 @@ death_watch_black_sun_guard = Creature:new {
 			},
 			lootChance = 500000
 		},
+		{
+			groups = {
+				{group = "blacksun_rare", chance = 10000000},
+			},
+			lootChance = 200000
+		},
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

@@ -31,3 +31,5 @@ includeFile("dungeon/geonosian_bio_lab/enhanced_rancor.lua")
 includeFile("dungeon/geonosian_bio_lab/enhanced_force_jawa_lord.lua")
 ----------Boogles Custom----------
 includeFile("dungeon/geonosian_bio_lab/crazed_geonosian_sentry.lua")
+
+includeFile("dungeon/geonosian_bio_lab/poggle_the_lesser.lua")

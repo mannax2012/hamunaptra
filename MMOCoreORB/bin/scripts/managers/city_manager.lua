@@ -61,7 +61,7 @@ CityVotingCycles = 1
 CityVotingCyclesUntilLocked = 2
 
 --The amount of time in minutes before the city performs an update.
-CityUpdateInterval = 4320
+CityUpdateInterval = 10080
 
 --The amount of time in minutes a new city has to gain enough citizens to remain a city.
 NewCityGracePeriod = 1440
@@ -85,7 +85,7 @@ TrainersPerRank = 7
 MissionTerminalsPerRank = 4
 
 -- Amount to discount city maintenance  float.  1 = 100%, .75 =75%, .5=50% etc
-maintenanceDiscount = .75
+maintenanceDiscount = 1.0
 
 --[[
 	CITIES ALLOWED PER PLANET
@@ -136,7 +136,7 @@ CityTaxes = {
 		emailBody = "@city/city:tax_income_body"
 	},
 	{--Property Tax
-		min = 0, max = 50,
+		min = 0, max = 500,
 		menuText = "@city/city:property_tax_prompt",
 		inputTitle = "@city/city:set_tax_t_property",
 		inputText = "@city/city:set_tax_d_property",
@@ -146,7 +146,7 @@ CityTaxes = {
 		emailBody = "@city/city:tax_property_body"
 	},
 	{--Sales Tax
-		min = 0, max = 20,
+		min = 0, max = 200,
 		menuText = "@city/city:sales_tax",
 		inputTitle = "@city/city:set_tax_t_sales",
 		inputText = "@city/city:set_tax_d_sales",
@@ -166,7 +166,7 @@ CityTaxes = {
 		emailBody = "@city/city:tax_travel_body"
 	},
 	{--Garage Tax
-		min = 0, max = 30,
+		min = 0, max = 300,
 		menuText = "@city/city:garage_tax",
 		inputTitle = "Adjust Garage Service Fee", -- missing from stf
 		inputText = "@city/city:set_tax_d_garage",
@@ -194,7 +194,7 @@ CitySpecializations = {
 	--},
 	{--Manufacturing Center
 		name = "@city/city:city_spec_manufacturing",
-		cost = 10000,
+		cost = 80000,
 		skillMods = {
 			{"private_spec_assembly", 10},
 			{"private_spec_samplesize", 40},
@@ -204,7 +204,7 @@ CitySpecializations = {
 	},
 	{--Medical Center
 		name = "@city/city:city_spec_doctor",
-		cost = 10000,
+		cost = 80000,
 		skillMods = {
 			{"private_medical_rating", 10},
 			{"private_spec_samplesize", 40},
@@ -221,7 +221,7 @@ CitySpecializations = {
 	--},
 	{--Research Center
 		name = "@city/city:city_spec_research",
-		cost = 10000,
+		cost = 80000,
 		skillMods = {
 			{"private_spec_experimentation", 15},
 			{"private_spec_samplesize", 40},
@@ -231,7 +231,7 @@ CitySpecializations = {
 	},
 	{--Improved Job Market
 		name = "@city/city:city_spec_missions",
-		cost = 10000,
+		cost = 80000,
 		skillMods = {
 			{"private_spec_missions", 15},
 			{"private_spec_samplesize", 40},
@@ -241,7 +241,7 @@ CitySpecializations = {
 	},
 	{--Entertainment District
 		name = "@city/city:city_spec_entertainer",
-		cost = 10000,
+		cost = 80000,
 		skillMods = {
 			{"private_spec_buff_mind", 10},
 			{"private_spec_samplesize", 40},
@@ -251,7 +251,7 @@ CitySpecializations = {
 	},
 	{--Stronghold
 		name = "@city/city:city_spec_stronghold",
-		cost = 10000,
+		cost = 80000,
 		skillMods = {
 			{"private_defense", 90},
 			{"private_spec_samplesize", 40},
@@ -261,7 +261,7 @@ CitySpecializations = {
 	},
 	{--Industrial District
 		name = "@city/city:city_spec_industrial",
-		cost = 15000,
+		cost = 150000,
 		skillMods = {
 			{"private_spec_experimentation", 15},
 			{"private_spec_assembly", 10},
@@ -272,7 +272,7 @@ CitySpecializations = {
 	},
 	{--Enhancement District
 		name = "@city/city:city_spec_enhancement",
-		cost = 15000,
+		cost = 150000,
 		skillMods = {
 			{"private_medical_rating", 10},
 			{"private_spec_buff_mind", 10},

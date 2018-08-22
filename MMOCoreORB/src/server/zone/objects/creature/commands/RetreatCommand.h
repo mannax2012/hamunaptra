@@ -8,10 +8,12 @@
 #include "SquadLeaderCommand.h"
 
 class RetreatCommand : public SquadLeaderCommand {
+	float range;
 public:
 
 	RetreatCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
+			range = 256;
 	}
 
 	bool checkRetreat(CreatureObject* creature) const {
@@ -94,6 +96,11 @@ public:
 				continue;
 
 			Locker clocker(member, player);
+
+			if(!checkDistance(member, player, range)) {
+				member->sendSystemMessage("You are too far from your Squad Leader");
+				return TOOFAR;
+			}
 
 			sendCombatSpam(member);
 			doRetreat(member);

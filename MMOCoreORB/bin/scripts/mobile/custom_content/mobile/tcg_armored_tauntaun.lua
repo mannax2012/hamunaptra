@@ -1,7 +1,5 @@
 tcg_armored_tauntaun = Creature:new {
-	customName = "tcg_armored_tauntaun",
-	randomNameType = NAME_GENERIC,
-	randomNameTag = true,
+	customName = "an Armored Tauntaun",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

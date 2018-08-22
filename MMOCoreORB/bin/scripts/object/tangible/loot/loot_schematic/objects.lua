@@ -5013,6 +5013,11 @@ object_tangible_loot_loot_schematic_shared_sith_speeder_schematic = SharedTangib
 }
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_sith_speeder_schematic, "object/tangible/loot/loot_schematic/shared_sith_speeder_schematic.iff")
 
+object_tangible_loot_loot_schematic_shared_geo_speeder_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geo_speeder_schematic.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geo_speeder_schematic, "object/tangible/loot/loot_schematic/shared_geo_speeder_schematic.iff")
+
 object_tangible_loot_loot_schematic_shared_landspeeder_ab1_schematic = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_landspeeder_ab1_schematic.iff"
 }
@@ -5213,3 +5218,8 @@ object_tangible_loot_loot_schematic_shared_clothing_ep3_chiss_poacher_backpack_s
 	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_clothing_ep3_chiss_poacher_backpack_schematic.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_clothing_ep3_chiss_poacher_backpack_schematic, "object/tangible/loot/loot_schematic/shared_clothing_ep3_chiss_poacher_backpack_schematic.iff")
+
+object_tangible_loot_loot_schematic_shared_geonosian_carbine_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_carbine_schematic.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_carbine_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_carbine_schematic.iff")

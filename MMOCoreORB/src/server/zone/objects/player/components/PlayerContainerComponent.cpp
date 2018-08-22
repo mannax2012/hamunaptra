@@ -162,8 +162,10 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 
 	if (ghost && ghost->isJedi()) {
 
+		//increase visibility for equipping a robe or saber near other players
 		if (object->isRobeObject()) {
 			ghost->setForcePowerMax(creo->getSkillMod("jedi_force_power_max"));
+			VisibilityManager::instance()->increaseVisibility(creo, VisibilityManager::SABERVISMOD);
 		} else if (object->isWeaponObject()) {
 			WeaponObject* weaponObject = cast<WeaponObject*>(object);
 			if (weaponObject->isJediWeapon()) {

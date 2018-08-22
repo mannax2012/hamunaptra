@@ -8,10 +8,12 @@
 #include "SquadLeaderCommand.h"
 
 class FormupCommand : public SquadLeaderCommand {
+			float range;
 public:
 
 	FormupCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
+			range = 256;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -79,11 +81,16 @@ public:
 
 			Locker clocker(member, leader);
 
+			if(!checkDistance(member, leader, range)) {
+					member->sendSystemMessage("You are too far from your Squad Leader");
+				return TOOFAR;
+			}
+
 			sendCombatSpam(member);
 
 			if (member->isDizzied())
 				member->removeStateBuff(CreatureState::DIZZY);
-					
+
 			if (member->isStunned())
 				member->removeStateBuff(CreatureState::STUNNED);
 

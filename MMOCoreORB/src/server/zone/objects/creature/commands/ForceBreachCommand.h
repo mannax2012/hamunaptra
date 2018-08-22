@@ -75,9 +75,9 @@ public:
 				if (creatureTarget->getSkillMod("jedi_state_defense") > 14)
 					buff->setSkillModifier("jedi_state_defense",-15);
 				int fDefense = creatureTarget->getSkillMod("force_defense");
-					fDefense *= .35;
+					fDefense *= .45;
 					fDefense *= -1;
-				buff->setSkillModifier("force_defense",fDefense); //now breaches 35% force defense 
+				buff->setSkillModifier("force_defense",fDefense); //now breaches 45% force defense 
 
 				creatureTarget->addBuff(buff);
 				creatureTarget->playEffect("clienteffect/pl_force_resist_bleeding_self.cef", "");

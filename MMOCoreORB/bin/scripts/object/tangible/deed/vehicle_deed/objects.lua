@@ -1023,3 +1023,12 @@ object_tangible_deed_vehicle_deed_shared_temp_walker1_deed = SharedTangibleObjec
 	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_temp_walker1_deed.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_temp_walker1_deed, "object/tangible/deed/vehicle_deed/shared_temp_walker1_deed.iff")
+
+--*****************************************
+
+object_tangible_deed_vehicle_deed_shared_geo_speeder_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_geo_speeder.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_geo_speeder_deed, "object/tangible/deed/vehicle_deed/shared_geo_speeder.iff")
+
+--*****************************************

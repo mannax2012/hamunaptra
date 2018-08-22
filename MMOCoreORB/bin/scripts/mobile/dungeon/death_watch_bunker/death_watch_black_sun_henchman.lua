@@ -42,6 +42,12 @@ death_watch_black_sun_henchman = Creature:new {
 			},
 			lootChance = 2500000
 		},
+		{
+			groups = {
+				{group = "blacksun_rare", chance = 10000000},
+			},
+			lootChance = 300000
+		},
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

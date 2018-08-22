@@ -80,7 +80,15 @@ public:
 			targetCreo = target->getLinkedCreature().get();
 
 		PlayerObject* ghost = targetCreo->getPlayerObject();
-		if (ghost == NULL || (ghost->hasBhTef() && !ghost->hasPvpTef()))
+		PlayerObject* leaderGhost = leader->getPlayerObject();
+
+		if (leaderGhost == NULL)
+			return false;
+
+		if (ghost == NULL)
+			return false;
+
+		if (ghost->hasBhTef() && !(ghost->hasGcwTef() && leaderGhost->hasGcwTef())) //If the SL and the BH are both GCW Teffed then the buff will work
 			return false;
 
 		uint32 leaderFaction = leader->getFaction();

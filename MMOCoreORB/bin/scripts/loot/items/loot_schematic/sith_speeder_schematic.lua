@@ -1,7 +1,7 @@
 sith_speeder_schematic = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "",
+	customObjectName = "Sith Speeder Schematic",
 	directObjectTemplate = "object/tangible/loot/loot_schematic/sith_speeder_schematic.iff",
 	craftingValues = {
 	},

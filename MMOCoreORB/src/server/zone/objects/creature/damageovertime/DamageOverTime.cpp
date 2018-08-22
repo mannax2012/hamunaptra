@@ -9,6 +9,7 @@
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "DamageOverTime.h"
 #include "server/zone/packets/object/ShowFlyText.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/ZoneServer.h"
 
@@ -344,8 +345,11 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 }
 
 uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* attacker) {
+	static uint8 legLocations[] = {4,5};
+	static uint8 bodyLocations[] = {1, 1, 2, 3};
+
 	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
+			if (victim->isIncapacitated() && victim->isFeigningDeath() == false)
 		return 0;
 
 	if (!victim->getZoneServer())
@@ -407,7 +411,63 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
                 }
 
 
+		CombatManager* combatManager = CombatManager::instance(); 
 
+		uint8 hitLocation;
+		
+			if (attribute == CreatureAttribute::HEALTH){
+				hitLocation = bodyLocations[System::random(3)];
+			}
+			else if (attribute == CreatureAttribute::ACTION){
+				hitLocation = legLocations[System::random(1)];
+			}
+			else {
+				hitLocation = 6;
+			}
+
+			ManagedReference<ArmorObject*> psg = combatManager->getPSGArmor(victim);
+			
+
+			if (psg != NULL && !psg->isVulnerable(SharedWeaponObjectTemplate::LIGHTSABER) ) {
+			float armorReduction =  combatManager->checkArmorObjectReduction(psg, SharedWeaponObjectTemplate::LIGHTSABER);
+			float dmgAbsorbed = strength;
+			if (armorReduction > 45)
+					armorReduction = 45; //Hardcap for legacy PSGS
+
+				if (victim->hasBuff(BuffCRC::JEDI_FORCEBREACH))
+						armorReduction *= .75;
+				if (armorReduction > 0) strength *= 1.f - (armorReduction / 100.f);
+
+				dmgAbsorbed -= strength;
+				if (dmgAbsorbed > 0)
+					combatManager->sendMitigationCombatSpam(victim, psg, (int)dmgAbsorbed, 0x1);
+			}
+			
+				// Standard Armor
+			ManagedReference<ArmorObject*> armor = NULL;
+
+			armor = combatManager->getArmorObject(victim, hitLocation);
+			if (armor != NULL && !armor->isVulnerable(SharedWeaponObjectTemplate::LIGHTSABER)) {
+				float armorReduction = combatManager->checkArmorObjectReduction(armor, SharedWeaponObjectTemplate::LIGHTSABER);
+				float dmgAbsorbed = strength;
+				float preArmorDamage = strength;
+				int armorPiercing = 2;	
+				
+				if (victim->hasBuff(BuffCRC::JEDI_FORCEBREACH))
+					armorPiercing++;
+				
+				if (armorReduction > 80)
+					armorReduction = 80;
+				strength *= combatManager->checkArmorPiercing(armor, armorPiercing);
+				if (preArmorDamage < strength && victim->isPlayerCreature()) //players cannot take more damage than you would have unarmored.
+					strength = preArmorDamage;
+						if (armorReduction > 0) {
+					strength *= (1.f - (armorReduction / 100.f));
+					dmgAbsorbed -= strength;
+					combatManager->sendMitigationCombatSpam(victim, armor, (int)dmgAbsorbed, 0x6);
+				}
+			}
+			
 
 	Core::getTaskManager()->executeTask([victimRef, attackerRef, attribute, strength] () {
 		Locker locker(victimRef);
@@ -417,7 +477,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 		int strMod = strength;
 		if (!attackerRef->isPlayerCreature())
 			strMod *= .5;
-
+	
 		victimRef->inflictDamage(attackerRef, attribute, strMod, true);
 
 		victimRef->playEffect("clienteffect/pl_force_choke.cef", "");

@@ -566,3 +566,9 @@ object_draft_schematic_vehicle_civilian_shared_sith_speeder = SharedDraftSchemat
 	clientTemplateFileName = "object/draft_schematic/vehicle/civilian/shared_sith_speeder.iff"
 }
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_civilian_shared_sith_speeder, "object/draft_schematic/vehicle/civilian/shared_sith_speeder.iff")
+
+--Geo Speeder
+object_draft_schematic_vehicle_civilian_shared_geo_speeder = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/civilian/shared_geo_speeder.iff"
+}
+ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_civilian_shared_geo_speeder, "object/draft_schematic/vehicle/civilian/shared_geo_speeder.iff")

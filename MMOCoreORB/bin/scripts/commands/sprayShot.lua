@@ -50,14 +50,14 @@ SprayShotCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 	accuracyBonus = 30,
-	
+
 	stateEffects = {
 	  StateEffect(
 		DIZZY_EFFECT,
 		{},
 		{ "dizzy_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		70,
+		80,
 		0,
 		30
 	  ),
@@ -66,7 +66,7 @@ SprayShotCommand = {
 		{},
 		{ "blind_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		100,
+		85,
 		0,
 		30
 	  ),
@@ -75,13 +75,13 @@ SprayShotCommand = {
 		{},
 		{ "stun_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		60,
+		80,
 		0,
 		10
 	  )
 	},
 
-	animation = "fire_7_single", 
+	animation = "fire_7_single",
 	animType = GENERATE_RANGED,
 
 	combatSpam = "sprayshot",
@@ -91,4 +91,3 @@ SprayShotCommand = {
 }
 
 AddCommand(SprayShotCommand)
-

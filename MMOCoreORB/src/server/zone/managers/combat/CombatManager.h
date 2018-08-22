@@ -161,13 +161,18 @@ public:
 	float hitChanceEquation(float attackerAccuracy, float attackerRoll, float targetDefense, float defenderRoll);
 	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
 
-	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef);
+	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwTef, bool* shouldBhTef, bool* shouldFactionalTef);
+	
+	int checkArmorObjectReduction(ArmorObject* armor, int damageType);
+	float checkArmorPiercing(TangibleObject* defender, int armorPiercing);
+	ArmorObject* getArmorObject(CreatureObject* defender, uint8 hitLocation);
+	ArmorObject* getPSGArmor(CreatureObject* defender);
 
 	//all the combat math will go here
 protected:
 
-	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef);
-	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef);
+	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef, bool* shouldFactionalTef);
+	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data, bool* shouldGcwTef, bool* shouldBhTef, bool* shouldFactionalTef);
 	void applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage, int unmitDamage, int poolsToDamage);
 	void applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	uint8 getPoolForDot(uint64 dotType, int poolsToDamage);
@@ -187,6 +192,7 @@ protected:
 	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon, TangibleObject* attacker);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
 	float getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage);
+	float getDefenderJediToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage);
 	int calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	float applyDamageModifiers(CreatureObject* attacker, WeaponObject* weapon, float damage, const CreatureAttackData& data);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
@@ -196,7 +202,7 @@ protected:
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 	bool isLightningAttack(const CreatureAttackData& data);
 	bool isFlameThrowerAttack(const CreatureAttackData& data);
-		
+
 	void showHitLocationFlyText(CreatureObject *attacker, CreatureObject *defender, uint8 location);
 
 	void doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
@@ -218,8 +224,7 @@ protected:
 	int getArmorVehicleReduction(VehicleObject* defender, int damageType);
 	int getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, int damageType);
 
-	ArmorObject* getArmorObject(CreatureObject* defender, uint8 hitLocation);
-	ArmorObject* getPSGArmor(CreatureObject* defender);
+
 
 	/**
 	 * returns bitmask with what pools to damage

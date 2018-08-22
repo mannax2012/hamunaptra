@@ -1236,6 +1236,7 @@ schematics = {
 	{path="object/draft_schematic/weapon/pistol_republic_blaster.iff"},
 	{path="object/draft_schematic/weapon/rifle_acid_beam.iff"},
 	{path="object/draft_schematic/weapon/rifle_flame_thrower.iff"},
+	{path="object/draft_schematic/weapon/carbine_geo.iff"},
 	{path="object/draft_schematic/scout/item_camp_basic.iff"},
 	{path="object/draft_schematic/scout/item_camp_multi.iff"},
 	{path="object/draft_schematic/scout/item_camp_improved.iff"},
@@ -1829,6 +1830,7 @@ schematics = {
 	{path="object/draft_schematic/vehicle/civilian/speeder_stap.iff"},
 	{path="object/draft_schematic/vehicle/civilian/landspeeder_ab1.iff"},
 	{path="object/draft_schematic/vehicle/civilian/sith_speeder.iff"},
+	{path="object/draft_schematic/vehicle/civilian/geo_speeder.iff"},
 
 	-- Craftable Jedi Robes
 	{path="object/draft_schematic/clothing/clothing_robe_jedi_padawan_crafted.iff"},
@@ -1884,4 +1886,6 @@ schematics = {
 
 	--Chiss Poacher Backpack
 	{path="object/draft_schematic/clothing/clothing_ep3_chiss_poacher_backpack.iff"},
+
+
 }

@@ -143,6 +143,7 @@ includeFile("tangible/loot/loot_schematic/flare_s_swoop_crafted_schematic.lua")
 includeFile("tangible/loot/loot_schematic/stap_speeder_schematic.lua")
 includeFile("tangible/loot/loot_schematic/landspeeder_ab1_schematic.lua")
 includeFile("tangible/loot/loot_schematic/sith_speeder_schematic.lua")
+includeFile("tangible/loot/loot_schematic/geo_speeder_schematic.lua")
 includeFile("tangible/loot/loot_schematic/armor_segment_mandalorian_schematic.lua")
 
 -- NGE Robes
@@ -183,3 +184,4 @@ includeFile("tangible/loot/loot_schematic/tat_sm_win_01_house_loot_schem.lua")
 
 --Chiss Poacher Backpack
 includeFile("tangible/loot/loot_schematic/clothing_ep3_chiss_poacher_backpack_schematic.lua")
+includeFile("tangible/loot/loot_schematic/geonosian_carbine_schematic.lua")

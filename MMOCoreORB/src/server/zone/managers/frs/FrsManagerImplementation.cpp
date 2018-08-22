@@ -267,21 +267,26 @@ void FrsManagerImplementation::updatePlayerSkills(CreatureObject* player) {
 		int rank = rankData->getRank();
 
 		if (playerRank >= rank) {
-			if (!player->hasSkill(rankSkill))
-				player->addSkill(rankSkill, true);
+			if (!player->hasSkill(rankSkill)){
+				error("Player qualifies for new skill adding skill: "  + rankSkill.toLowerCase());
+				//player->addSkill(rankSkill, true);
+				SkillManager::instance()->awardSkill(rankSkill, player, true, true, true, true, false);
+																													//bool notifyClient, bool awardRequiredSkills, bool noXpRequired, bool ignoreRequirements, bool setRank)
+			}
 		} else {
 			if (player->hasSkill(rankSkill))
-				player->removeSkill(rankSkill, true);
+				SkillManager::instance()->surrenderSkill(rankSkill, player, true, true);
+				//player->removeSkill(rankSkill, true);
 		}
 	}
 
 	//Award Guardian/Master at Rank 8 and 11
 	if (playerRank >= 8 && !player->hasSkill("force_title_jedi_rank_04")){
-		 SkillManager::instance()->awardSkill("force_title_jedi_rank_04", player, true, true, true);
+		 SkillManager::instance()->awardSkill("force_title_jedi_rank_04", player, true, true, true, false);
 	}
 
 	if (playerRank >= 11 && !player->hasSkill("force_title_jedi_master")){
-		SkillManager::instance()->awardSkill("force_title_jedi_master", player, true, true, true);
+		SkillManager::instance()->awardSkill("force_title_jedi_master", player, true, true, true, false);
 	}
 
 }

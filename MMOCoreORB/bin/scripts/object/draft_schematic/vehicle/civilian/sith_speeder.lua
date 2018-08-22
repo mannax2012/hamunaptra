@@ -20,12 +20,12 @@ object_draft_schematic_vehicle_civilian_sith_speeder = object_draft_schematic_ve
 	customizationStringNames = {},
 	customizationDefaults = {},
 
-	ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
-	ingredientTitleNames = {"vehicle_body", "structural_frame", "stabilizor_subframe", "avionic_subassembly", "repulsor_assembly", "cockpit_fitout"},
-	ingredientSlotType = {0, 0, 0, 0, 0, 0},
-	resourceTypes = {"aluminum_titanium", "metal_ferrous", "aluminum_linksteel", "aluminum_linksteel", "fiberplast_lok", "steel_carbonite"},
-	resourceQuantities = {2650, 8950, 3220, 1840, 3650, 1250},
-	contribution = {100, 100, 100, 100, 100, 100},
+	ingredientTemplateNames = {"craft_vehicle_ingredients_n", "craft_vehicle_ingredients_n"},
+	ingredientTitleNames = {"vehicle_body", "structural_frame"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"aluminum_linksteel", "iron_axidite"},
+	resourceQuantities = {4155, 1667},
+	contribution = {100, 100},
 
 	targetTemplate = "object/tangible/deed/vehicle_deed/vehicle_deed_sith_speeder.iff",
 

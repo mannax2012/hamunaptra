@@ -1,5 +1,5 @@
 dewback_armored = Creature:new {
-	customName = "human_base_male",
+	customName = "an Armored Dewback",
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
 	socialGroup = "townsperson",

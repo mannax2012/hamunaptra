@@ -313,6 +313,7 @@ includeFile("items/geonosian_lab/geo_relic_tech_kit.lua")
 includeFile("items/geonosian_lab/geo_solidifying_agent.lua")
 includeFile("items/geonosian_lab/geo_sonic_blaster.lua")
 includeFile("items/geonosian_lab/geo_sonic_blaster_schematic.lua")
+includeFile("items/geonosian_lab/geo_carbine_schematic.lua")
 includeFile("items/geonosian_lab/geo_spider_fang.lua")
 includeFile("items/geonosian_lab/geo_spider_venom.lua")
 includeFile("items/geonosian_lab/geo_spider_venom_base.lua")
@@ -1272,7 +1273,7 @@ includeFile("items/loot_schematic/stap_speeder_schematic.lua")
 includeFile("items/loot_schematic/flare_s_swoop_crafted_schematic.lua")
 includeFile("items/loot_schematic/landspeeder_ab1_schematic.lua")
 includeFile("items/loot_schematic/sith_speeder_schematic.lua")
-
+includeFile("items/loot_schematic/geo_speeder_schematic.lua")
 
 -- NGE Houses
 includeFile("items/loot_schematic/musty_house_loot_schematic.lua")

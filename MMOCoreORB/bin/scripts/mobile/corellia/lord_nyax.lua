@@ -2,13 +2,13 @@ lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax",
 	socialGroup = "followers_of_lord_nyax",
 	faction = "followers_of_lord_nyax",
-	level = 195,
+	level = 290,
 	chanceHit = 4.9,
-	damageMin = 775,
-	damageMax = 1260,
+	damageMin = 950,
+	damageMax = 1530,
 	baseXp = 12235,
-	baseHAM = 127300,
-	baseHAMmax = 153200,
+	baseHAM = 189400,
+	baseHAMmax = 245343,
 	armor = 2,
 	resists = {80,45,40,20,50,100,10,15,-1},
 	meatType = "",
@@ -34,8 +34,36 @@ lord_nyax = Creature:new {
 				{group = "crystal_strength_of_luminaria", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000},
 				{group = "clothing_attachments", chance = 1000000}
-			}
-		}
+			},
+			lootChance = 10000000,
+		},
+		{
+			groups = {
+				{group = "color_crystals", chance = 2000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "composite_armor", chance = 1500000},
+				{group = "melee_two_handed", chance = 1500000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "wearables_common", chance = 1000000}
+			},
+			lootChance = 10000000,
+		},
+		{
+	    		groups =
+			{
+				{group = "veteran_rewards_1080_days", chance = 10000000},
+			},
+			lootChance = 1000000,
+		},
+		{
+	    		groups =
+			{
+				{group = "veteran_rewards_810_days", chance = 10000000},
+			},
+			lootChance = 1000000,
+		},
 	},
 	weapons = {"nyaxs_weapons"},
 	conversationTemplate = "",

@@ -34,7 +34,7 @@ public:
 
 		SkillManager* skillManager = SkillManager::instance();
 		skillManager->surrenderSkill(arguments.toString(), targetCreature, true);
-		bool skillGranted = skillManager->awardSkill(arguments.toString(), targetCreature, true, true, true);
+		bool skillGranted = skillManager->awardSkill(arguments.toString(), targetCreature, true, true, true, false, true);
 
 		if (skillGranted) {
 			StringIdChatParameter params;

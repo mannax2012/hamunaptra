@@ -107,7 +107,7 @@ includeFile("groups/geonosian_lab/geonosian_common.lua")
 includeFile("groups/geonosian_lab/geonosian_cubes.lua")
 includeFile("groups/geonosian_lab/geonosian_hard.lua")
 includeFile("groups/geonosian_lab/geonosian_relic.lua")
-
+includeFile("groups/geonosian_lab/geonosian_poggle.lua")
 -- hero_of_tatooine sub-folder
 includeFile("groups/hero_of_tatooine/hero_of_tat_mark_of_courage.lua")
 
@@ -158,6 +158,7 @@ includeFile("groups/npc/tusken_common.lua")
 includeFile("groups/npc/tutorial_pirate.lua")
 includeFile("groups/npc/valarian_common.lua")
 includeFile("groups/npc/weequay_common.lua")
+includeFile("groups/npc/emporers_hand.lua")
 
 -- task_loot sub-folder
 includeFile("groups/task_loot/hedon_istee_treasure.lua")
