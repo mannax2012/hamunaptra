@@ -578,3 +578,38 @@ includeFile("draft_schematic/clothing/clothing_exar_cultist_hood_up.lua")
 
 includeFile("draft_schematic/clothing/clothing_ep3_chiss_poacher_backpack.lua")
 
+-- MTG Backpacks
+
+includeFile("draft_schematic/clothing/clothing_backpack_efol_wings.lua")
+includeFile("draft_schematic/clothing/clothing_backpack_field_07.lua")
+includeFile("draft_schematic/clothing/clothing_backpack_field_08.lua")
+includeFile("draft_schematic/clothing/clothing_backpack_field_09.lua")
+includeFile("draft_schematic/clothing/clothing_backpack_krayt_skull.lua")
+includeFile("draft_schematic/clothing/clothing_backpack_treasure_map_s01.lua")
+includeFile("draft_schematic/clothing/clothing_backpack_treasure_map_s06.lua")
+
+-- Craftable Stormtrooper Armor
+--[[
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_bicep_l.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_bicep_r.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_boots.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_bracer_l.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_bracer_r.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_chest.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_gloves.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_helmet.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_leggings.lua")
+includeFile("draft_schematic/clothing/clothing_armor_stormtrooper_belt.lua")
+]]
+-- Craftable Marine Armor
+
+includeFile("draft_schematic/clothing/clothing_armor_marine_bicep_l.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_bicep_r.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_boots.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_bracer_l.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_bracer_r.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_chest.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_gloves.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_helmet.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_leggings.lua")
+includeFile("draft_schematic/clothing/clothing_armor_marine_belt.lua")

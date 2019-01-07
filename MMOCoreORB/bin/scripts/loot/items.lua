@@ -1388,3 +1388,15 @@ includeFile("items/veteran_rewards/painting_09.lua")
 
 includeFile("items/infinity/may_fourth/hssiss_lizard_venom.lua")
 includeFile("items/infinity/may_fourth/ork_slug_blood.lua")
+
+-- Robes
+
+includeFile("items/custom/robe_jedi_dark_s02.lua")
+includeFile("items/custom/robe_jedi_dark_s03.lua")
+includeFile("items/custom/robe_jedi_dark_s04.lua")
+includeFile("items/custom/robe_jedi_dark_s05.lua")
+
+includeFile("items/custom/robe_jedi_light_s02.lua")
+includeFile("items/custom/robe_jedi_light_s03.lua")
+includeFile("items/custom/robe_jedi_light_s04.lua")
+includeFile("items/custom/robe_jedi_light_s05.lua")

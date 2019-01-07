@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
@@ -2195,6 +2196,16 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	if (child == NULL || turretTemplate == NULL || turretTemplate->getGameObjectType() != SceneObjectType::DESTRUCTIBLE)
 		return;
 
+	if (!creature->checkCooldownRecovery("turret_timer")) {
+
+		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:turret_timer_str"); // You cannot place another Turret for %TO minutes.
+		Time* cooldownTimer = creature->getCooldownTime("turret_timer");
+		int minutes = ceil(cooldownTimer->miliDifference() / -60000.f);
+		params.setTO(String::valueOf(minutes) + " minutes.");
+		creature->sendSystemMessage(params);
+		return;
+	}
+
 	uint64 turretID = addChildInstallationFromDeed(building, child, creature, turretDeed);
 
 	if (turretID > 0) {
@@ -2207,7 +2218,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45"); // You successfully donate a %TO deed to the current facility.
 		params.setTO(turretDeed->getObjectNameStringIdFile(), turretDeed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
-
+		creature->updateCooldownTimer("turret_timer", ((5 * 60)*1000)); // For TESTING - cannot place turret for 5 minutes, change the "5" to however many minutes
 		verifyTurrets(building);
 		block.release();
 

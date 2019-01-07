@@ -461,3 +461,7 @@ includeFile("groups/infinity/orkellian_slug_blood.lua")
 
 -- Misc
 includeFile("groups/lockedcontainer.lua")
+
+-- Robes
+includeFile("groups/custom/robes_dark.lua")
+includeFile("groups/custom/robes_light.lua")

@@ -337,8 +337,8 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 
 	auto client = callback->getClient();
 
-	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= 6) {
-		ErrorMessage* errMsg = new ErrorMessage("Create Error", "Infinity allows a maximum of 6 characters per account.", 0x0);
+	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= 7) {
+		ErrorMessage* errMsg = new ErrorMessage("Limited Time!", "Infinity is allowing players to create up to 7 characters for the festive period. It will be back to a max limit of 6 in the New Year", 0x0);
 		client->sendMessage(errMsg);
 
 		return false;

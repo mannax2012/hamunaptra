@@ -185,3 +185,27 @@ includeFile("tangible/loot/loot_schematic/tat_sm_win_01_house_loot_schem.lua")
 --Chiss Poacher Backpack
 includeFile("tangible/loot/loot_schematic/clothing_ep3_chiss_poacher_backpack_schematic.lua")
 includeFile("tangible/loot/loot_schematic/geonosian_carbine_schematic.lua")
+
+--Rebel Marine
+includeFile("tangible/loot/loot_schematic/rebel_marine_bicep_l_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_bicep_r_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_boots_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_bracer_l_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_bracer_r_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_chest_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_gloves_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_helmet_schematic.lua")
+includeFile("tangible/loot/loot_schematic/rebel_marine_leggings_schematic.lua")
+
+--stormtrooper
+--[[
+includeFile("tangible/loot/loot_schematic/stormtrooper_bicep_l_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_bicep_r_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_boots_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_bracer_l_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_bracer_r_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_chest_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_gloves_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_helmet_schematic.lua")
+includeFile("tangible/loot/loot_schematic/stormtrooper_leggings_schematic.lua")
+]]

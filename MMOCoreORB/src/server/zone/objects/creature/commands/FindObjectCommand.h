@@ -85,6 +85,9 @@ public:
 				if (object == NULL)
 					continue;
 
+                                ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(objects.get(i).get());
+
+
 				if (object == creature)
 					continue;
 
@@ -93,11 +96,12 @@ public:
 				Locker crlocker(object, creature);
 
 				String name = object->getDisplayedName();
+				String serial = tano->getSerialNumber();
 
 				if (objectFilter == "-p") {
 					if (!object->isPlayerCreature())
 						continue;
-				} else if (!name.toLowerCase().contains(objectFilter.toLowerCase()))
+				} else if (!name.toLowerCase().contains(objectFilter.toLowerCase()) && (!serial.toLowerCase().contains(objectFilter.toLowerCase())))
 					continue;
 
 				results << name;

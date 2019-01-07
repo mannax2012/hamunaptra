@@ -5713,6 +5713,11 @@ void PlayerManagerImplementation::awardPvpProgress(TangibleObject* killer, Creat
 	ManagedReference<PlayerObject*> killedGhost = destructedObject->getPlayerObject();
 	ManagedReference<PlayerManager*> playerManager = killerCreature->getZoneServer()->getPlayerManager();
 
+
+	Locker frsLocker(frsManager);
+	Locker cLocker(killerCreature);
+	Locker vLocker(destructedObject);
+
 	ThreatMap* victimThreatMap = destructedObject->getThreatMap();
 	Reference<ThreatMap*> copyVictimThreatMap = new ThreatMap(*victimThreatMap);
 
@@ -5795,10 +5800,6 @@ void PlayerManagerImplementation::awardPvpProgress(TangibleObject* killer, Creat
 		finalAward += ((modifiedAward * .25)/sizeRatio);
 		error("Award: +OverWhelming Bonus" + String::valueOf(finalAward));
 	}
-
-	Locker frsLocker(frsManager);
-	Locker cLocker(killerCreature);
-	Locker vLocker(destructedObject);
 
 	bool awardAllowed = true;
 

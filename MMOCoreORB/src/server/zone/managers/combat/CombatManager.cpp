@@ -592,8 +592,8 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			if (!attacker->isPlayerCreature()) //No lightning burns for npcs
 				continue;
 
-			str += (defender->getMaxHAM(pool) * .025); //2.5% max health burn
-			damageToApply += (defender->getMaxHAM(pool) * .025);
+			str += (defender->getMaxHAM(pool) * .01); //1% max health burn
+			damageToApply += (defender->getMaxHAM(pool) * .01);
 			//info("Lightning attack, new str = " + String::valueOf(str), true);
 		}
 		str /= defender->getFrsMod("manipulation");
@@ -834,7 +834,7 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 	int buffDefense = 0;
 	float copPenalty = 0;
 	int cop = defender->getSkillMod("cloakofpain");
-	
+
 	Vector<String>* defenseAccMods = weapon->getDefenderDefenseModifiers();
 
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
@@ -849,11 +849,11 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 		copPenalty = ((cop/100) * targetDefense);
 
 	targetDefense -= copPenalty;
-	
+
 	// defense hardcap
 	if (targetDefense > 125)
 		targetDefense = 125;
-		
+
 
 	if (attacker->isPlayerCreature())
 		targetDefense += defender->getSkillMod("private_defense");
@@ -1716,9 +1716,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		//Force Lightning for player lightning
 		if (isLightningAttack(data)){
 			if (attacker->isPlayerCreature() && defender->isPlayerCreature())
-						damage *= 2.15;
+						damage *= 1.75;
 			else if (attacker->isPlayerCreature() && !defender->isPlayerCreature())
-						damage *= 5.25;
+						damage *= 3.5;
 
 			if (!attacker->isPlayerCreature())
 				damage *= .6; //40% damage reduction for NPCs using powers abilities
@@ -1774,9 +1774,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 									     //If you are Mpowers doing a 10k hit you get back 161 force after the -1 penalty for force cost
 				}
 
-				if (!data.getCommand()->isAreaAction()){
+				if (!data.getCommand()->isAreaAction() || !data.getCommand()->isConeAction()){
 					if (!defender->isPlayerCreature())
-						siphon *= 3.15;
+						siphon *= 2.5;
 					else if (defender->isPlayerCreature())
 						siphon *= 2;
 				}
@@ -1952,10 +1952,10 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 			int saberBlock = 0;
 			float saberFRSMod = targetCreature->getFrsMod("manipulation",2);
 			saberBlock = targetCreature->getSkillMod(def);
-			
+
 			if (saberBlock <= 1)
 				return HIT;
-			
+
 			if (attacker->isPlayerCreature() && saberBlock > 50)
 				saberBlock = 50 * saberFRSMod; //saber block maximum in pvp is 50%, further modified up to 82.5% with FRS
 

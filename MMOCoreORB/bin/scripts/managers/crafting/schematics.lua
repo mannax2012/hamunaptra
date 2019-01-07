@@ -1,4 +1,4 @@
---Copyright (C) 2010 <SWGEmu>
+F--Copyright (C) 2010 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -1731,6 +1731,24 @@ schematics = {
 	{path="object/draft_schematic/clothing/clothing_armor_ris_gloves.iff"},
 	{path="object/draft_schematic/clothing/clothing_armor_ris_helmet.iff"},
 	{path="object/draft_schematic/clothing/clothing_armor_ris_leggings.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_bicep_l.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_bicep_r.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_boots.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_bracer_l.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_bracer_r.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_chest_plate.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_gloves.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_helmet.iff"},
+	{path="object/draft_schematic/armor/armor_appearance_rebel_marine_leggings.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_bicep_l.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_bicep_r.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_boots.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_bracer_l.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_bracer_r.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_chest_plate.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_gloves.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_helmet.iff"},
+	{path="object/draft_schematic/clothing/clothing_armor_stormtrooper_leggings.iff"},
 	{path="object/draft_schematic/food/drink_mandalorian_wine.iff"},
 	{path="object/draft_schematic/furniture/furniture_basket_closed.iff"},
 	{path="object/draft_schematic/furniture/furniture_bottle_fat.iff"},

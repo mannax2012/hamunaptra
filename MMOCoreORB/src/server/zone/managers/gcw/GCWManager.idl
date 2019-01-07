@@ -121,7 +121,7 @@ class GCWManager extends ManagedService implements Logger {
 		overtCooldown = 300;
 		reactivationTimer = 300;
 		turretAutoFireTimeout = 20;
-		maxBasesPerPlayer = 3;
+		maxBasesPerPlayer = 1;
 		bonusXP = 15;
 		loserBonus = 0;
 		winnerBonus = 30;

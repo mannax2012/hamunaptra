@@ -41,7 +41,7 @@ reactivationTimer = 300
 -- X seconds after the last manual activity the turret will be able to auto fire
 turretAutoFireTimeout = 20
 
-maxBasesPerPlayer = 3
+maxBasesPerPlayer = 1
 
 -- xp bonus for faction controlling a planet
 bonusXP = 15
